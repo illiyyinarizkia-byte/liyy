@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Pemesanan Barang</title>
+</head>
+<body>
+
+    <h2>Form Pemesanan Barang</h2>
+
+    <form action="#" method="post">
+
+        <!-- Nama -->
+        <label for="nama">Nama Pemesan:</label><br>
+        <input type="text" id="nama" name="nama" required><br><br>
+
+        <!-- Nomor HP -->
+        <label for="hp">Nomor HP:</label><br>
+        <input type="tel" id="hp" name="hp" required><br><br>
+
+        <!-- Pilih Barang -->
+        <label for="barang">Pilih Barang:</label><br>
+        <select id="barang" name="barang">
+            <option value="">-- Pilih Barang --</option>
+            <option value="baju">Baju</option>
+            <option value="celana">Celana</option>
+            <option value="sepatu">Sepatu</option>
+        </select><br><br>
+
+        <!-- Jumlah -->
+        <label for="jumlah">Jumlah:</label><br>
+        <input type="number" id="jumlah" name="jumlah" value="1" min="1"><br><br>
+
+        <!-- Tanggal -->
+        <label for="tanggal">Tanggal Pemesanan:</label><br>
+        <input type="date" id="tanggal" name="tanggal"><br><br>
+
+        <!-- Waktu -->
+        <label for="waktu">Waktu Pengiriman:</label><br>
+        <input type="time" id="waktu" name="waktu"><br><br>
+
+        <!-- Metode Pembayaran -->
+        <p>Metode Pembayaran:</p>
+        <input type="radio" id="cod" name="pembayaran" value="COD">
+        <label for="cod">Bayar di Tempat (COD)</label><br>
+
+        <input type="radio" id="transfer" name="pembayaran" value="Transfer">
+        <label for="transfer">Transfer Bank</label><br><br>
+
+        <!-- Tombol -->
+        <button type="submit">Pesan Sekarang</button>
+        <button type="reset">Batal</button>
+
+    </form>
+
+</body>
+</html>
