@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ILY STORE </title>
+
+<style>
+body{
+    font-family: Arial;
+    margin:0;
+    background:#ffe4ef;
+}
+
+/* HEADER */
+header{
+    background:#ff4da6;
+    color:white;
+    padding:15px;
+    text-align:center;
+    font-size:24px;
+}
+
+/* PRODUK */
+.container{
+    padding:20px;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+}
+.card{
+    background:white;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+}
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:8px;
+}
+.price{
+    color:#ff4da6;
+    font-weight:bold;
+}
+.desc{
+    font-size:14px;
+    color:#666;
+    margin:5px 0;
+}
+button{
+    background:#ff4da6;
+    color:white;
+    border:none;
+    padding:8px;
+    border-radius:5px;
+    cursor:pointer;
+}
+button:hover{
+    opacity:0.8;
+}
+
+/* CART */
+.cart{
+    position:fixed;
+    right:10px;
+    top:10px;
+    background:white;
+    padding:10px;
+    border-radius:10px;
+}
+
+/* CHECKOUT */
+#checkout-page{
+    max-width:400px;
+    margin:20px auto;
+}
+#checkout-form label{
+    font-weight:bold;
+}
+#checkout-form input, #checkout-form textarea, #checkout-form select{
+    width:100%;
+    padding:8px;
+    margin:5px 0 15px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+#checkout-form button{
+    margin-right:10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>ILY STORE </header>
+
+<div class="cart">
+🛒 Item: <span id="count">0</span><br>
+💰 Total: Rp <span id="total">0</span><br>
+<button onclick="showCheckout()">Checkout</button>
+</div>
+
+<!-- Halaman Checkout -->
+<div id="checkout-page" style="display:none; padding:20px; background:white; margin:20px; border-radius:10px;">
+<h2>Checkout </h2>
+<p>Total Item: <span id="checkout-count">0</span></p>
+<p>Total Harga: Rp <span id="checkout-total">0</span></p>
+<form id="checkout-form">
+<label>Nama:</label><br>
+<input type="text" id="nama" required><br><br>
+<label>Alamat:</label><br>
+<textarea id="alamat" required></textarea><br><br>
+<label>Nomor HP:</label><br>
+<input type="text" id="hp" required><br><br>
+<label>Metode Pembayaran:</label><br>
+<select id="payment">
+<option value="transfer">Transfer Bank</option>
+<option value="cod">COD</option>
+</select><br><br>
+<button type="submit">Konfirmasi Pesanan</button>
+<button type="button" onclick="hideCheckout()">Batal</button>
+</form>
+</div>
+
+<div class="container">
+<div class="grid">
+
+<div class="card">
+    <img src="c:\Users\INDAH\Downloads\download.jfif" alt="Kemeja ">
+<p>Kemeja</p>
+<p class="price">Rp 100.000</p>
+<p class="desc">Kemeja wanita dengan desain elegan dan kekinian, dibuat dari bahan berkualitas yang lembut dan nyaman di kulit. Cocok digunakan untuk acara formal maupun santai. Tampil stylish dan percaya diri dengan kemeja yang simpel namun tetap modis ini.</p>
+<button onclick="add(100.000)">Beli</button>
+</div>
+
+<div class="card">
+<img id="img2" src="c:\Users\INDAH\Downloads\download (1).jfif">
+<p>Tas</p>
+<p class="price">Rp 150.000</p>
+<p class="desc">Tas wanita kekinian dengan desain stylish dan elegan, cocok untuk melengkapi penampilan sehari-hari. Dibuat dari bahan berkualitas dengan ruang yang cukup luas, sehingga praktis sekaligus fashionable..</p>
+<button onclick="add(150.000)">Beli</button>
+</div>
+
+<div class="card">
+<img src="c:\Users\INDAH\Downloads\download (2).jfif">
+<p>Jam Tangan Wanita</p>
+<p class="price">Rp 180.000</p>
+<p class="desc">Jam tangan dengan desain elegan dan modern yang cocok digunakan untuk berbagai aktivitas. Dilengkapi dengan bahan berkualitas dan tampilan yang stylish, sehingga nyaman dipakai sekaligus menunjang penampilan.</p>
+<button onclick="add(180.000)">Beli</button>
+</div>
+
+<div class="card">
+<img src="c:\Users\INDAH\Downloads\Home Try On inspiration.jfif">
+<p>Kacamata Bergaya</p>
+<p class="price">Rp 35.000</p>
+<p class="desc">Kacamata bergaya dengan desain modern dan trendy, cocok digunakan untuk menunjang penampilan sehari-hari. Dibuat dengan bahan ringan dan nyaman dipakai, sehingga tetap stylish tanpa mengurangi kenyamanan.</p>
+<button onclick="add(35.000)">Beli</button>
+</div>
+
+<div class="card">
+<img src="c:\Users\INDAH\Downloads\why is it so pretty_🩰.jfif">
+<p>Sepatu Puma</p>
+<p class="price">Rp 2.700.00</p>
+<p class="desc">Sepatu Puma wanita dengan desain sporty yang stylish dan kekinian. Nyaman digunakan sepanjang hari dengan bahan berkualitas tinggi, cocok untuk kamu yang ingin tampil aktif namun tetap fashionable.</p>
+<button onclick="add(2.700.00)">Beli</button>
+</div>
+
+<div class="card">
+<img src="c:\Users\INDAH\Downloads\download (4).jfif">
+<p>Cardigan Wanita</p>
+<p class="price">Rp 160.000</p>
+<p class="desc">Cardigan wanita dengan desain simpel dan elegan, cocok digunakan untuk berbagai aktivitas. Dibuat dari bahan yang lembut dan nyaman dipakai, sehingga memberikan kehangatan sekaligus tampilan yang stylish.</p>
+<button onclick="add(160.000)">Beli</button>
+</div>
+
+<div class="card">
+<img src="c:\Users\INDAH\Downloads\Bird in Bag - Vibrant Japanese-Inspired Cartoon Print Women's Wallet in Multicolor.jfif">
+<p>Dompet</p>
+<p class="price">Rp 80.000</p>
+<p class="desc">Dompet stylish dengan desain modern dan kualitas tinggi, cocok untuk menyimpan barang-barang penting dengan aman.</p>
+<button onclick="add(80.000)">Beli</button>
+</div>
+
+</div>
+</div>
+
+<script>
+let count = 0;
+let total = 0;
+
+function add(harga){
+    count++;
+    total += harga;
+
+    document.getElementById("count").innerText = count;
+    document.getElementById("total").innerText = total;
+}
+
+function showCheckout(){
+    if(count == 0){
+        alert("Keranjang kosong ");
+    } else {
+        document.getElementById("checkout-count").innerText = count;
+        document.getElementById("checkout-total").innerText = total;
+        document.getElementById("checkout-page").style.display = "block";
+        document.querySelector(".container").style.display = "none";
+    }
+}
+
+function hideCheckout(){
+    document.getElementById("checkout-page").style.display = "none";
+    document.querySelector(".container").style.display = "block";
+}
+
+document.getElementById("checkout-form").addEventListener("submit", function(e){
+    e.preventDefault();
+    let nama = document.getElementById("nama").value;
+    let alamat = document.getElementById("alamat").value;
+    let hp = document.getElementById("hp").value;
+    let payment = document.getElementById("payment").value;
+
+    alert("Pesanan berhasil! \nNama: " + nama + "\nAlamat: " + alamat + "\nHP: " + hp + "\nPembayaran: " + payment + "\nTotal: Rp " + total + " ");
+
+    // Reset
+    count = 0;
+    total = 0;
+    document.getElementById("count").innerText = 0;
+    document.getElementById("total").innerText = 0;
+    hideCheckout();
+    document.getElementById("checkout-form").reset();
+});
+</script>
+
+</body>
+</html>
